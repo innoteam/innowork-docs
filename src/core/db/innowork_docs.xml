@@ -1,0 +1,23 @@
+<?xml version='1.0'?>
+<database>
+
+    <table name="innowork_docs">
+        <field  name="id"   type="integer"  notnull="1"/>
+        <field  name="ownerid"  type="integer"  notnull="1"/>
+        <field  name="directoryid" type="integer" notnull="1"/>
+        <field  name="customerid"   type="integer"/>
+        <field  name="projectid"    type="integer"/>
+        <field  name="realname"   type="text" notnull="1"/>
+        <field  name="description"  type="text"/>
+        <field  name="keywords" type="text"/>
+        <field  name="status"   type="integer"/>
+        <field  name="size"   type="integer"/>
+        <field  name="storedname" type="text"/>
+        <field name="trashed" type="boolean"/>
+
+        <key    field="id"  type="unique"/>
+    </table>
+
+    <sequence   name="innowork_docs_id_seq"/>
+
+</database>

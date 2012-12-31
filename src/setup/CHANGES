@@ -1,0 +1,49 @@
+1.2 - 2004/07/15
+----------------
+NEW FEATURES:
+- Added inline editor for text/plain type files. (Alex Pagnoni)
+- Added support for Innowork conversion feature. (Alex Pagnoni)
+
+
+
+1.1.2 - 2004/05/15
+------------------
+FIXES:
+- Fixed wrong handling of applications dependencies check. (Alex Pagnoni)
+
+
+
+1.1.1 - 2004/04/15
+------------------
+CHANGES:
+- Now only open projects are shown in projects list when adding a new document. (Alex Pagnoni)
+
+
+
+1.1 - 2003/12/15
+----------------
+NEW FEATURES:
+- Added cut/paste feature. (Alex Pagnoni)
+- Added use of trashcan feature. (Alex Pagnoni)
+- Added trashcan in file properties view. (Alex Pagnoni)
+- Improved speed. (Alex Pagnoni)
+
+CHANGES:
+- Now files are sent as "attachment" in place of "inline". (Alex Pagnoni)
+- Better file properties view. (Alex Pagnoni)
+- Now when closing or updating a file, the current directory is the
+  file parent one. (Alex Pagnoni)
+- Now customer and project properties in files list view are links
+  (Alex Pagnoni).
+- Adapted to Innowork Core 2.1 organization. (Alex Pagnoni)
+- Changed "customer" labels to "company". (Alex Pagnoni)
+- Removed parent link. (Alex Pagnoni)
+
+FIXES:
+- Fixed bug of disappearing directories from directories list when there
+  are files with the same id of the array index used by a directory. (Alex Pagnoni)
+
+
+1.0.0 - 2003/05/16
+------------------
+- First release.

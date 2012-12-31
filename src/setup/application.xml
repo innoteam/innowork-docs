@@ -1,0 +1,89 @@
+<?xml version='1.0'?>
+<application>
+
+	<definition>
+		<idname>innowork-docs</idname>
+		<release>
+			<version>1.2</version>
+			<date>2008/12/15</date>
+			<changesfile>CHANGES</changesfile>
+		</release>
+		<description>Innowork Documents Management</description>
+		<category>intranet</category>
+		<iconfile></iconfile>
+		<dependencies>
+			<dependency>innowork-core[2.1]</dependency>
+			<dependency>mimetypeslib</dependency>
+			<dependency>innomatic[5.0]</dependency>
+			<suggestion>innowork-groupware[2.0]</suggestion>
+		</dependencies>
+		<options>
+			<!-- <option></option> -->
+		</options>
+		<legal>
+			<author>
+				<name>Innomatica</name>
+				<email>info@innomatica.it</email>
+				<web>http://www.innomatica.it/</web>
+			</author>
+			<copyright>Copyright (c) 2003-2008 Innoteam</copyright>
+			<license>Commercial</license>
+			<licensefile>LICENSE</licensefile>
+		</legal>
+		<support>
+			<supportemail>support@innomatica.it</supportemail>
+			<bugsemail>bugs@innomatica.it</bugsemail>
+			<maintainer>
+				<name>Alex Pagnoni</name>
+				<email>alex.pagnoni@innoteam.it</email>
+			</maintainer>
+		</support>
+	</definition>
+
+	<components>
+
+		<domainpostinstall file="domainpostinstall.php" />
+
+		<domainpostupdate file="domainpostupdate.php" />
+
+		<domainpostuninstall file="domainpostuninstall.php" />
+
+		<domaingroup name="documents"
+			catalog="innowork-docs::misc" />
+
+		<domainpanel name="innoworkdocs" file="innoworkdocs.php"
+			category="documents" themeicon="file-manager" themeicontype="apps"
+			catalog="innowork-docs::misc" />
+
+		<domaintable name="innowork_docs" file="innowork_docs.xml" />
+		<domaintable name="innowork_docs_dirs"
+			file="innowork_docs_dirs.xml" />
+
+		<catalog name="innowork-docs" />
+
+		<wuiwidget name="innoworkdocsview"
+			file="WuiInnoworkdocsview.php" />
+
+		<wuivalidator name="innoworkdocsview"
+			file="InnoworkdocsviewWuiValidator.php" />
+
+		<class name="innowork/docs/InnoworkDocument.php" />
+		<class name="innowork/docs/InnoworkDocumentDirectory.php" />
+		
+		<tempdir name="innowork-docs" />
+
+		<innoworkitemtype name="document" file="document"
+			catalog="innowork-docs::misc" classfile="innowork/docs/InnoworkDocument.php"
+			classname="InnoworkDocument" icon="file-manager" icontype="apps"
+			domainpanel="innoworkdocs" miniicon="folder"
+			summaryname="documents-name" showmode="app" />
+
+		<innoworkitemtype name="documentdirectory"
+			file="documentdirectory" catalog="innowork-docs::misc"
+			classfile="innowork/docs/InnoworkDocumentDirectory.php" classname="InnoworkDocumentDirectory"
+			domainpanel="innoworkdocs" icon="file-manager" icontype="apps"
+			summaryname="documentdirectories-name" />
+
+	</components>
+
+</application>

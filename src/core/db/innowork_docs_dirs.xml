@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<database>
+
+    <table name="innowork_docs_dirs">
+        <field  name="id"   type="integer"  notnull="1"/>
+        <field  name="ownerid"  type="integer"  notnull="1"/>
+        <field  name="parentid"  type="integer"/>
+        <field  name="directoryname" type="text"/>
+        <field  name="storedname" type="text"/>
+        <field name="trashed" type="boolean"/>
+
+        <key    field="id"  type="unique"/>
+    </table>
+
+    <sequence	name="innowork_docs_dirs_id_seq"/>
+
+</database>
