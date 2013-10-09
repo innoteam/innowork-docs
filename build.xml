@@ -8,14 +8,14 @@
 
   =======================================================================
 -->
-<project name="Innowork Docs" basedir=".." default="package">
+<project name="Innowork Docs" default="package">
 
 	<property name="name" value="innowork-docs" />
 	<property name="version" value="1.2" />
 
 	<target name="src">
-		<tar destfile="../${name}-src-${version}.tgz" compression="gzip">
-			<tarfileset dir="." prefix="${name}-src-${version}">
+		<tar destfile="${basedir}/build/${name}-src-${version}.tgz" compression="gzip">
+			<tarfileset dir="${basedir}/source" prefix="${name}-src-${version}">
 				<exclude name="**/.svn/**" />
 				<exclude name="project.index" />
 				<exclude name=".project" />
@@ -26,8 +26,8 @@
 	</target>
 
 	<target name="package">
-		<tar destfile="../${name}-${version}.tgz" compression="gzip">
-			<tarfileset dir="." prefix="${name}-${version}">
+		<tar destfile="${basedir}/build/${name}-${version}.tgz" compression="gzip">
+			<tarfileset dir="${basedir}/source" prefix="${name}-${version}">
 				<exclude name="**/.cvsignore" />
 				<exclude name="**/.svn/**" />
 				<exclude name="build/**" />
