@@ -49,6 +49,8 @@ class WuiInnoworkDocsView extends WuiXml {
         if ( isset($this->mArgs['fileid'] ) )
             $this->mFileId = $this->mArgs['fileid'];
 
+        require_once('shared/wui/WuiSessionkey.php');
+        
         if ( isset($this->mArgs['directoryid'] ) )
         {
             $this->mDirectoryId = $this->mArgs['directoryid'];

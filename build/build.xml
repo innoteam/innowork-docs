@@ -13,7 +13,7 @@
 	<property name="name" value="innowork-docs" />
 	<property name="version" value="1.2" />
 
-	<target name="sources">
+	<target name="src">
 		<tar destfile="../${name}-src-${version}.tgz" compression="gzip">
 			<tarfileset dir="." prefix="${name}-src-${version}">
 				<exclude name="**/.svn/**" />
