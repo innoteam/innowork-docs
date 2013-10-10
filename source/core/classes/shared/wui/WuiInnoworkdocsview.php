@@ -332,7 +332,7 @@ class WuiInnoworkDocsView extends WuiXml {
     <horizgroup>
       <children>
 
-        <toolbar>
+        <horizgroup>
           <children>
 
             <form><name>gohome'.$this->mName.'</name>
@@ -443,9 +443,9 @@ class WuiInnoworkDocsView extends WuiXml {
 
         $this->mDefinition .=
 '          </children>
-        </toolbar>
+        </horizgroup>
 
-        <toolbar>
+        <horizgroup>
           <children>
 
             <form><name>newdir'.$this->mName.'</name>
@@ -485,9 +485,9 @@ class WuiInnoworkDocsView extends WuiXml {
             </button>
 
           </children>
-        </toolbar>
+        </horizgroup>
 
-        <toolbar>
+        <horizgroup>
           <children>
 
             <form><name>viewmode'.$this->mName.'</name>
@@ -567,7 +567,7 @@ class WuiInnoworkDocsView extends WuiXml {
             </form>
 
           </children>
-        </toolbar>
+        </horizgroup>
 
       </children>
     </horizgroup>
