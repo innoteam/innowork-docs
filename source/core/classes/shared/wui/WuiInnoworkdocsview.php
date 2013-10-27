@@ -552,7 +552,7 @@ class WuiInnoworkDocsView extends WuiXml {
 
             <button>
               <args>
-                <themeimage>button_ok</themeimage>
+                <themeimage>buttonok</themeimage>
                 <horiz>true</horiz>
                 <frame>false</frame>
                 <formsubmit>viewmode'.$this->mName.'</formsubmit>
@@ -882,7 +882,7 @@ class WuiInnoworkDocsView extends WuiXml {
 
                 $toolbars['view']['properties'] = array(
                     'label' => $locale->getStr( 'properties.button' ),
-                    'themeimage' => 'viewmag',
+                    'themeimage' => 'zoom',
                     'themeimagetype' => 'mini',
                     'compact' => 'true',
                     'horiz' => 'true',
@@ -894,7 +894,7 @@ class WuiInnoworkDocsView extends WuiXml {
                 {
                 $toolbars['view']['update'] = array(
                     'label' => $locale->getStr( 'update.button' ),
-                    'themeimage' => 'edit',
+                    'themeimage' => 'pencil',
                     'horiz' => 'true',
                     'action' => $this->mUpdateAction.'&wui['.$this->mDisp.'][evd][fileid]='.
                     );
@@ -914,7 +914,7 @@ class WuiInnoworkDocsView extends WuiXml {
                         );
                     $toolbars['view']['remove'] = array(
                         'label' => $locale->getStr( 'remove.button' ),
-                        'themeimage' => 'edittrash',
+                        'themeimage' => 'trash',
                         'themeimagetype' => 'mini',
                         'horiz' => 'true',
                         'needconfirm' => 'true',
@@ -926,7 +926,7 @@ class WuiInnoworkDocsView extends WuiXml {
                     if ($file['class'] == 'text/plain') {
                     $toolbars['view']['edit'] = array(
                         'label' => $locale->getStr( 'edit.button' ),
-                        'themeimage' => 'edit',
+                        'themeimage' => 'pencil',
                         'themeimagetype' => 'mini',
                         'compact' => 'true',
                         'horiz' => 'true',
@@ -948,7 +948,7 @@ class WuiInnoworkDocsView extends WuiXml {
                         );
                     $toolbars['view']['remove'] = array(
                         'label' => $locale->getStr( 'remove.button' ),
-                        'themeimage' => 'edittrash',
+                        'themeimage' => 'trash',
                         'themeimagetype' => 'mini',
                         'horiz' => 'true',
                         'compact' => 'true',

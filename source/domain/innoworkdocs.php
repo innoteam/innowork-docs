@@ -555,7 +555,7 @@ $row = 3;
 
         <button>
           <args>
-            <themeimage>button_ok</themeimage>
+            <themeimage>buttonok</themeimage>
             <formsubmit>properties</formsubmit>
             <horiz>true</horiz>
             <frame>false</frame>
@@ -615,7 +615,7 @@ $row = 3;
         </button>
         <button>
           <args>
-            <themeimage>edittrash</themeimage>
+            <themeimage>trash</themeimage>
             <horiz>true</horiz>
             <frame>false</frame>
             <label type="encoded">'.urlencode( $gLocale->getStr( 'trash.button' ) ).'</label>
@@ -804,7 +804,7 @@ function main_dirproperties(
         <children>
         <button>
           <args>
-            <themeimage>button_ok</themeimage>
+            <themeimage>buttonok</themeimage>
             <formsubmit>properties</formsubmit>
             <horiz>true</horiz>
             <frame>false</frame>
@@ -848,7 +848,7 @@ function main_dirproperties(
         </button>
         <button>
           <args>
-            <themeimage>edittrash</themeimage>
+            <themeimage>trash</themeimage>
             <horiz>true</horiz>
             <frame>false</frame>
             <label type="encoded">'.urlencode( $gLocale->getStr( 'trash.button' ) ).'</label>
@@ -1014,7 +1014,7 @@ function main_editfile(
 
         <button>
           <args>
-            <themeimage>button_ok</themeimage>
+            <themeimage>buttonok</themeimage>
             <formsubmit>edit</formsubmit>
             <horiz>true</horiz>
             <frame>false</frame>
