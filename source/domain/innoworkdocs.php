@@ -43,7 +43,7 @@ $gCore_toolbars = $gInnowork_core->getMainToolBar();
 $gToolbars['docs'] = array(
     'documents' => array(
         'label' => $gLocale->getStr( 'documents.toolbar' ),
-        'themeimage' => 'view_icon',
+        'themeimage' => 'listdetailed',
         'horiz' => 'true',
         'action' => WuiEventsCall::buildEventsCallString( '', array( array(
             'view',
@@ -55,7 +55,7 @@ $gToolbars['docs'] = array(
 $gToolbars['prefs'] = array(
     'prefs' => array(
         'label' => $gLocale->getStr( 'preferences.toolbar' ),
-        'themeimage' => 'configure',
+        'themeimage' => 'settings1',
         'horiz' => 'true',
         'action' => WuiEventsCall::buildEventsCallString( 'innoworkbillingprefs', array( array(
             'view',
