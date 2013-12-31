@@ -27,11 +27,11 @@ class InnoworkDocument extends InnoworkItem
         $this->mKeys['customerid'] = 'table:innowork_directory_companies:companyname:integer';
 		
         require_once('innomatic/application/ApplicationDependencies.php');
-        $app_dep = new ApplicationDependencies( InnomaticContainer::instance('innomaticcontainer')->getDataAccess() );
+        $app_dep = new ApplicationDependencies( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess() );
 
         if ($app_dep->IsEnabled(
             'innowork-groupware',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId())) {
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId())) {
         	$this->mKeys['projectid'] = 'table:innowork_projects:name:integer';
         	$this->mSearchResultKeys[] = 'projectid';
         	$this->mViewableSearchResultKeys[] = 'projectid';
@@ -200,8 +200,8 @@ class InnoworkDocument extends InnoworkItem
                         $data = $this->getItem();
 
                         $tmp_dir = new InnoworkDocumentDirectory(
-                            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                             $data['directoryid']
                             );
 
@@ -229,8 +229,8 @@ class InnoworkDocument extends InnoworkItem
         $data = $this->getItem();
 
         $tmp_dir = new InnoworkDocumentDirectory(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
             $data['directoryid']
             );
 
@@ -279,8 +279,8 @@ class InnoworkDocument extends InnoworkItem
             $data = $this->getItem();
 
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $data['directoryid']
                 );
 
@@ -335,8 +335,8 @@ class InnoworkDocument extends InnoworkItem
             if ( !strlen( $result ) )
             {
                 $tmp_dir = new InnoworkDocumentDirectory(
-                    InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                    InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                    \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                    \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                     $data['directoryid']
                     );
 
@@ -367,8 +367,8 @@ class InnoworkDocument extends InnoworkItem
                 '',
                 0,
                 'innowork-docs',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserName()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserName()
                 );
 
             $item['type'] = $this->mItemType;
@@ -387,20 +387,20 @@ class InnoworkDocument extends InnoworkItem
         $result = false;
         if ($this->mItemId and $this->mConvertible) {
             require_once('innowork/core/InnoworkCore.php');
-        	$tmp_innoworkcore = InnoworkCore::instance('innoworkcore', InnomaticContainer::instance('innomaticcontainer')->getDataAccess(), InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess());
+        	$tmp_innoworkcore = InnoworkCore::instance('innoworkcore', \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(), \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess());
             $summaries = $tmp_innoworkcore->GetSummaries();
             $class_name = $summaries[$type]['classname'];
 			if (!class_exists($class_name)) {
 				return false;
 			}
-            $tmp_class = new $class_name(InnomaticContainer::instance('innomaticcontainer')->getDataAccess(), InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess());
+            $tmp_class = new $class_name(\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(), \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess());
 
             if ($tmp_class->mConvertible) {
                 $real_data = $this->getItem();
 
         $innowork_dir = new InnoworkDocumentDirectory(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
             $real_data['directoryid']
             );
 
@@ -429,7 +429,7 @@ class InnoworkDocument extends InnoworkItem
                 $real_data[$this->mGenericFields['title']] = $genericData['title'];
             $result = $this->Create($real_data);
             
-            $tmp_fname = InnomaticContainer::instance('innomaticcontainer')->getHome().'core/temp/innowork-docs/'.md5( microtime() );
+            $tmp_fname = \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getHome().'core/temp/innowork-docs/'.md5( microtime() );
             if ($fh = fopen($tmp_fname, 'wb')) {
                 if (strlen($genericData['binarycontent'])) fwrite($fh, $genericData['binarycontent']);
                 else fwrite($fh, $genericData['content']);

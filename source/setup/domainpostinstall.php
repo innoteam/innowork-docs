@@ -4,14 +4,14 @@
  *
  */
 
-$domain_query = InnomaticContainer::instance('innomaticcontainer')->getDataAccess()->Execute(
+$domain_query = \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess()->Execute(
     'SELECT domainid '.
     'FROM domains '.
     'WHERE id='.$domainid
 );
 
-if ( !file_exists( InnomaticContainer::instance('innomaticcontainer')->getHome().'core/domains/'.$domain_query->getFields( 'domainid' ).'/innowork-docs-files/' ) ) {
-	mkdir( InnomaticContainer::instance('innomaticcontainer')->getHome().'core/domains/'.$domain_query->getFields( 'domainid' ).'/innowork-docs-files/', 0755 );
+if ( !file_exists( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getHome().'core/domains/'.$domain_query->getFields( 'domainid' ).'/innowork-docs-files/' ) ) {
+	mkdir( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getHome().'core/domains/'.$domain_query->getFields( 'domainid' ).'/innowork-docs-files/', 0755 );
 }
 
 ?>

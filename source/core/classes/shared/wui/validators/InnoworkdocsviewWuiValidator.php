@@ -56,8 +56,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 				require_once('innowork/docs/InnoworkDocumentDirectory.php');
 
 				$innowork_dir = new InnoworkDocumentDirectory(
-				InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-				InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+				\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+				\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
 				);
 
 				$innowork_dir->Create(
@@ -83,8 +83,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocumentDirectory.php');
 
 			$innowork_doc = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocs-dir-id']
 			);
 
@@ -106,8 +106,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 				)
 				{
 					$innowork_dir = new InnoworkDocumentDirectory(
-					InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-					InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+					\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+					\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 					Wui::instance('wui')->parameters['wui']['wui']['evd']['directoryid']
 					);
 					$innowork_dir->AddArchivedTree(
@@ -121,8 +121,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 				{
 					require_once('innowork/docs/InnoworkDocument.php');
 					$innowork_doc = new InnoworkDocument(
-					InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-					InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+					\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+					\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
 					);
 
 					$innowork_doc->Create(
@@ -158,8 +158,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocument.php');
 
 			$innowork_doc = new InnoworkDocument(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocs-doc-id']
 			);
 
@@ -172,16 +172,16 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocumentDirectory.php');
 
 			$innowork_doc = new InnoworkDocument(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocs-doc-id']
 			);
 
 			$innowork_doc_data = $innowork_doc->getItem();
 
 			$innowork_dir = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			$innowork_doc_data['directoryid']
 			);
 
@@ -201,7 +201,7 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 				header( 'Pragma: no-cache' );
 				print( $buf );
 
-				InnomaticContainer::instance('innomaticcontainer')->halt();
+				\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->halt();
 			}
 
 			break;
@@ -228,8 +228,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocumentDirectory.php');
 				
 			$innowork_doc = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocs-dir-id']
 			);
 
@@ -241,8 +241,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocument.php');
 				
 			$innowork_doc = new InnoworkDocument(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocs-doc-id']
 			);
 
@@ -254,8 +254,8 @@ isset(Wui::instance('wui')->parameters['wui']['wui']['evd']['innoworkdocsaction'
 			require_once('innowork/docs/InnoworkDocumentDirectory.php');
 
 			$innowork_doc = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			Wui::instance('wui')->parameters['wui']['wui']['evd']['directoryid']
 			);
 

@@ -203,7 +203,7 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 
 		// Directories
 
-		$dirs_query = InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()->Execute(
+		$dirs_query = \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()->Execute(
             'SELECT id '.
             'FROM innowork_docs_dirs '.
             'WHERE parentid='.$this->mItemId );
@@ -211,8 +211,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		while ( !$dirs_query->eof )
 		{
 			$tmp_dir = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			$dirs_query->getFields( 'id' )
 			);
 
@@ -228,7 +228,7 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 
 		// Documents
 
-		$docs_query = InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()->Execute(
+		$docs_query = \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()->Execute(
             'SELECT id '.
             'FROM innowork_docs '.
             'WHERE directoryid='.$this->mItemId );
@@ -236,8 +236,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		while ( !$docs_query->eof )
 		{
 			$tmp_doc = new InnoworkDocument(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			$docs_query->getFields( 'id' )
 			);
 
@@ -324,8 +324,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		if ( $dir_data['parentid'] != 0 )
 		{
 			$tmp_dir = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			$dir_data['parentid']
 			);
 			$result = $tmp_dir->getRealPath().$dir_data['directoryname'].'/';
@@ -345,8 +345,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		if ( $dir_data['parentid'] != 0 )
 		{
 			$tmp_dir = new InnoworkDocumentDirectory(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
 			$dir_data['parentid']
 			);
 			$result = $tmp_dir->getStoredPath().$dir_data['storedname'].'/';
@@ -359,7 +359,7 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 
 	function getBasePath()
 	{
-		return InnomaticContainer::instance('innomaticcontainer')->getHome().'core/domains/'.InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId().'/innowork-docs-files/';
+		return \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getHome().'core/domains/'.\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId().'/innowork-docs-files/';
 	}
 
 	function AddArchivedTree(
@@ -377,7 +377,7 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		{
 			require_once('innomatic/io/archive/Archive.php');
 
-			$dest_dir = InnomaticContainer::instance('innomaticcontainer')->getHome().'core/temp/innowork-docs/'.md5( microtime() );
+			$dest_dir = \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getHome().'core/temp/innowork-docs/'.md5( microtime() );
 			mkdir( $dest_dir );
 
 			$arc = new Archive(
@@ -418,8 +418,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 			if ( $create )
 			{
 				$tmp_dir = new InnoworkDocumentDirectory(
-				InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-				InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+				\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+				\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
 				);
 
 				$tmp_dir->Create(
@@ -467,8 +467,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 		else
 		{
 			$tmp_doc = new InnoworkDocument(
-			InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
 			);
 
 			$tmp_doc->Create(
@@ -503,13 +503,13 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 	 if (
 	 $this->mId
 	 and
-	 InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()->Execute(
+	 \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()->Execute(
 	 'DELETE FROM innowork_billing_vat '.
 	 'WHERE id='.$this->mId
 	 )
 	 )
 	 {
-	 InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()->Execute(
+	 \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()->Execute(
 	 'UPDATE innowork_billing_invoices_rows '.
 	 'SET vatid=0 '.
 	 'WHERE vatid='.$this->mId
@@ -550,8 +550,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
                 '',
 			0,
                 'innowork-docs',
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId(),
-			InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserName()
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId(),
+			\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserName()
 			);
 
 			$item['type'] = $this->mItemType;
@@ -579,8 +579,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
                 '',
 		0,
                 'innowork-docs',
-		InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId(),
-		InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserName()
+		\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId(),
+		\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserName()
 		);
 
 		if ( $clip->IsValid() )
@@ -605,8 +605,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
 							return false;
 						}
                         $tmp_class = new $class_name(
-                        InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                        InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                         $result['id']
                         );
 
@@ -631,8 +631,8 @@ class InnoworkDocumentDirectory extends InnoworkItem {
                         		$doc_data = $tmp_class->getItem();
 
                         		$tmp_dir = new InnoworkDocumentDirectory(
-                        		InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                        		InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                        		\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                        		\Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                         		$doc_data['directoryid']
                         		);
 

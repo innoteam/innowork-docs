@@ -146,24 +146,24 @@ class WuiInnoworkDocsView extends WuiXml {
         require_once('innomatic/locale/LocaleCatalog.php'); require_once('innomatic/locale/LocaleCountry.php'); 
         $locale = new LocaleCatalog(
             'innowork-docs::misc',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getLanguage()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getLanguage()
             );
 
         // Available applications
 
-    $core = InnoworkCore::instance('innoworkcore', InnomaticContainer::instance('innomaticcontainer')->getDataAccess(), InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess());
+    $core = InnoworkCore::instance('innoworkcore', \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(), \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess());
     $summ = $core->getSummaries();
 
     if (isset($summ['directorycompany']))
         {
             $innowork_company = new InnoworkCompany(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $customers_search = $innowork_company->Search(
                 '',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $directory_available = true;
@@ -176,15 +176,15 @@ class WuiInnoworkDocsView extends WuiXml {
     if (isset($summ['project']))
         {
             $innowork_project = new InnoworkProject(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $projects_search = $innowork_project->Search(
                 array(
-                    'done' => InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()->fmtfalse
+                    'done' => \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()->fmtfalse
                 ),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $projects_available = true;
@@ -201,8 +201,8 @@ class WuiInnoworkDocsView extends WuiXml {
         if ( $this->mDirectoryId != 0 )
         {
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $this->mDirectoryId
                 );
 
@@ -215,31 +215,31 @@ class WuiInnoworkDocsView extends WuiXml {
         // Files
 
         $innowork_dirs = new InnoworkDocumentDirectory(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
             );
         $dirs_search = $innowork_dirs->Search(
             array(
                 'parentid' => $this->mDirectoryId
                 ),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
             );
 
         $innowork_docs = new InnoworkDocument(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
             );
         $docs_search = $innowork_docs->Search(
             array(
                 'directoryid' => $this->mDirectoryId
                 ),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
             );
 
         require_once('innomatic/locale/LocaleCatalog.php'); require_once('innomatic/locale/LocaleCountry.php'); 
 
         $country = new LocaleCountry(
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getCountry()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getCountry()
             );
 
         $files_array = array();
@@ -404,8 +404,8 @@ class WuiInnoworkDocsView extends WuiXml {
             '',
             0,
             'innowork-docs',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserName()
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserName()
             );
 
         if ( $clip->IsValid() )
@@ -716,8 +716,8 @@ class WuiInnoworkDocsView extends WuiXml {
                         $action = $this->mDefaultAction.'&wui[wui][evd][innoworkdocsaction]=chdir&wui[wui][evd][directoryid]='.$file['id'];
 
                         $innowork_item = new InnoworkDocumentDirectory(
-                            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                             $file['id']
                             );
 
@@ -736,8 +736,8 @@ class WuiInnoworkDocsView extends WuiXml {
                     $action = $this->mDefaultAction.'&wui[wui][evd][innoworkdocsaction]=getfile&wui[wui][evd][innoworkdocs-doc-id]='.$file['id'];
 
                     $innowork_item = new InnoworkDocument(
-                        InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                        InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                         $file['id']
                         );
 
@@ -807,8 +807,8 @@ class WuiInnoworkDocsView extends WuiXml {
                     require_once('innowork/groupware/InnoworkCompany.php');
 
                     $innowork_customer = new InnoworkCompany(
-                        InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                        InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                         $file['customerid']
                         );
 
@@ -843,8 +843,8 @@ class WuiInnoworkDocsView extends WuiXml {
                     require_once('innowork/groupware/InnoworkProject.php');
 
                     $innowork_project = new InnoworkProject(
-                        InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                        InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                        \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                         $file['projectid']
                         );
 

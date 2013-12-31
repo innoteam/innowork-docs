@@ -23,13 +23,13 @@ require_once('innomatic/locale/LocaleCountry.php');
 
 require_once('innowork/core/InnoworkCore.php');
 $gInnowork_core = InnoworkCore::instance('innoworkcore', 
-    InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-    InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+    \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+    \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
     );
 
 $gLocale = new LocaleCatalog(
     'innowork-docs::main',
-    InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getLanguage()
+    \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getLanguage()
     );
 
 $gWui = Wui::instance('wui');
@@ -82,8 +82,8 @@ function action_update(
     if ( $eventData['fileid'] )
     {
         $innowork_doc = new InnoworkDocument(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
             $eventData['fileid']
             );
 
@@ -113,8 +113,8 @@ function action_update(
     elseif ( $eventData['directoryid'] )
     {
         $innowork_dir = new InnoworkDocumentDirectory(
-            InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
             $eventData['directoryid']
             );
 
@@ -135,16 +135,16 @@ function action_editfile($eventData) {
     if ( $eventData['id'] )
     {
             $tmp_file = new InnoworkDocument(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $eventData['id']
                 );
 
             $tmp_file_data = $tmp_file->getItem();
 
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $tmp_file_data['directoryid']
                 );
 
@@ -291,27 +291,27 @@ function main_docproperties(
 {
     global $gXml_def, $gLocale;
 
-    $country = new LocaleCountry( InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getCountry() );
+    $country = new LocaleCountry( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getCountry() );
 
     if ( !isset($eventData['id'] ) ) $eventData['id'] = '';
 
         // Available applications
 		require_once('innomatic/application/ApplicationDependencies.php');
-        $app_dep = new ApplicationDependencies( InnomaticContainer::instance('innomaticcontainer')->getDataAccess() );
+        $app_dep = new ApplicationDependencies( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess() );
 
         if ( $app_dep->IsEnabled(
             'innowork-groupware',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId() )
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId() )
             )
         {
             $innowork_company = new InnoworkCompany(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $customers_search = $innowork_company->Search(
                 '',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $directory_available = true;
@@ -323,17 +323,17 @@ function main_docproperties(
 
         if ( $app_dep->IsEnabled(
             'innowork-groupware',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId() )
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId() )
             )
         {
             $innowork_project = new InnoworkProject(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $projects_search = $innowork_project->Search(
                 '',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $projects_available = true;
@@ -346,16 +346,16 @@ function main_docproperties(
         if ( $eventData['id'] )
         {
             $tmp_file = new InnoworkDocument(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $eventData['id']
                 );
 
             $tmp_file_data = $tmp_file->getItem();
 
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $tmp_file_data['directoryid']
                 );
 
@@ -687,21 +687,21 @@ function main_dirproperties(
         // Available applications
 
 		require_once('innomatic/application/ApplicationDependencies.php');
-        $app_dep = new ApplicationDependencies( InnomaticContainer::instance('innomaticcontainer')->getDataAccess() );
+        $app_dep = new ApplicationDependencies( \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess() );
 
         if ( $app_dep->IsEnabled(
             'innowork-groupware',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId() )
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId() )
             )
         {
             $innowork_company = new InnoworkCompany(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $customers_search = $innowork_company->Search(
                 '',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $directory_available = true;
@@ -713,17 +713,17 @@ function main_dirproperties(
 
         if ( $app_dep->IsEnabled(
             'innowork-groupware',
-            InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDomainId() )
+            \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDomainId() )
             )
         {
             $innowork_project = new InnoworkProject(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess()
                 );
 
             $projects_search = $innowork_project->Search(
                 '',
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentUser()->getUserId()
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentUser()->getUserId()
                 );
 
             $projects_available = true;
@@ -736,8 +736,8 @@ function main_dirproperties(
         if ( $eventData['id'] != 0 )
         {
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $eventData['id']
                 );
 
@@ -919,16 +919,16 @@ function main_editfile(
         if ( $eventData['id'] )
         {
             $tmp_file = new InnoworkDocument(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $eventData['id']
                 );
 
             $tmp_file_data = $tmp_file->getItem();
 
             $tmp_dir = new InnoworkDocumentDirectory(
-                InnomaticContainer::instance('innomaticcontainer')->getDataAccess(),
-                InnomaticContainer::instance('innomaticcontainer')->getCurrentDomain()->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
+                \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getCurrentDomain()->getDataAccess(),
                 $tmp_file_data['directoryid']
                 );
 
