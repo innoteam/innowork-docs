@@ -840,7 +840,7 @@ class WuiInnoworkDocsView extends WuiXml {
 
                 if ( $projects_available )
                 {
-                    require_once('innowork/groupware/InnoworkProject.php');
+                    require_once('innowork/projects/InnoworkProject.php');
 
                     $innowork_project = new InnoworkProject(
                         \Innomatic\Core\InnomaticContainer::instance('\Innomatic\Core\InnomaticContainer')->getDataAccess(),
